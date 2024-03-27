@@ -38,6 +38,8 @@ type QuotaStatus struct {
 //+kubebuilder:object:root=true
 //+kubebuilder:subresource:status
 
+// +kubebuilder:webhook:path=/validate--v1-pod,mutating=false,failurePolicy=fail,groups="",resources=pods,verbs=create;update,versions=v1,name=vpod.kb.io,admissionReviewVersions=v1,sideEffects=None
+
 // Quota is the Schema for the quotas API
 type Quota struct {
 	metav1.TypeMeta   `json:",inline"`

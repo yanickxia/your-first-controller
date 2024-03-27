@@ -1,0 +1,8 @@
+apiVersion: resource.tutorial.controller.io/v1
+kind: Quota
+metadata:
+  name: test
+spec:
+  limits:
+    cpu: "1"
+    mem: "100Mi"
