@@ -1,15 +1,32 @@
+---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  labels:
-    app.kubernetes.io/name: clusterrole
-    app.kubernetes.io/instance: manager-role
-    app.kubernetes.io/component: rbac
-    app.kubernetes.io/created-by: quota-limit
-    app.kubernetes.io/part-of: quota-limit
-    app.kubernetes.io/managed-by: kustomize
   name: manager-role
 rules:
-- apiGroups: [""]
-  resources: ["pods"]
-  verbs: ["get", "list", "watch"]
+- apiGroups:
+  - resource.tutorial.controller.io
+  resources:
+  - quotas
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - resource.tutorial.controller.io
+  resources:
+  - quotas/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - resource.tutorial.controller.io
+  resources:
+  - quotas/status
+  verbs:
+  - get
+  - patch
+  - update

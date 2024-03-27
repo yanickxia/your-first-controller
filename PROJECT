@@ -7,4 +7,14 @@ layout:
 - go.kubebuilder.io/v4
 projectName: quota-limit
 repo: tutorial.controller.io/quota-limit
+resources:
+- api:
+    crdVersion: v1
+    namespaced: true
+  controller: true
+  domain: tutorial.controller.io
+  group: resource
+  kind: Quota
+  path: tutorial.controller.io/quota-limit/api/v1
+  version: v1
 version: "3"
